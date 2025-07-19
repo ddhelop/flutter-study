@@ -6,42 +6,49 @@ void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          actions: [
-            IconButton(
-              icon: Icon(Icons.home),
-              onPressed: () {
-                print('Tab!');
-              },
-            ),
-            IconButton(icon: Icon(Icons.play_arrow), onPressed: () {}),
-          ],
-          centerTitle: false,
-          title: Text('This is AppBar'),
-        ),
-        body: TestWidget(),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.bug_report),
-          onPressed: () {
-            print('Floating Action Button!');
-          },
-        ),
+        appBar: AppBar(title: Text('Study to Container')),
+        body: CustomContainer(),
       ),
     ),
   );
 }
 
-class TestWidget extends StatelessWidget {
-  const TestWidget({super.key});
+class CustomContainer extends StatelessWidget {
+  const CustomContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Center(
-        child: Text(
-          'Hello, Flutter',
-          style: TextStyle(fontSize: 60, color: Colors.black),
+    return Container(
+      width: 300,
+      height: 300,
+
+      padding: EdgeInsets.fromLTRB(10, 20, 30, 40),
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 24),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.3),
+            offset: Offset(10, 10),
+            blurRadius: 10,
+            spreadRadius: 10,
+          ),
+          BoxShadow(
+            color: Colors.blue.withOpacity(0.3),
+            offset: Offset(10, 10),
+            blurRadius: 10,
+            spreadRadius: 10,
+          ),
+        ],
+        border: Border.all(
+          color: Colors.black,
+          width: 5,
+          style: BorderStyle.solid,
         ),
+        color: Color(0xFF85D07B),
+      ),
+      child: Center(
+        child: Container(color: Colors.white, child: Text('Hello, Container')),
       ),
     );
   }
