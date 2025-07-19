@@ -7,48 +7,45 @@ void main() {
     MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('Study to Container')),
-        body: CustomContainer(),
+        body: Body(),
       ),
     ),
   );
 }
 
-class CustomContainer extends StatelessWidget {
-  const CustomContainer({super.key});
+class Body extends StatelessWidget {
+  const Body({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
-      height: 300,
-
-      padding: EdgeInsets.fromLTRB(10, 20, 30, 40),
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 24),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.3),
-            offset: Offset(10, 10),
-            blurRadius: 10,
-            spreadRadius: 10,
+      width: double.infinity,
+      height: double.infinity,
+      color: Colors.grey,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            color: Colors.red,
+            width: 100,
+            height: 80,
+            child: Text('Container 1'),
           ),
-          BoxShadow(
-            color: Colors.blue.withOpacity(0.3),
-            offset: Offset(10, 10),
-            blurRadius: 10,
-            spreadRadius: 10,
+          Container(
+            color: Colors.green,
+            width: 100,
+            height: 100,
+            child: Text('Container 2'),
+          ),
+          Container(
+            color: Colors.blue,
+            width: 100,
+            height: 100,
+            child: Text('Container 3'),
           ),
         ],
-        border: Border.all(
-          color: Colors.black,
-          width: 5,
-          style: BorderStyle.solid,
-        ),
-        color: Color(0xFF85D07B),
-      ),
-      child: Center(
-        child: Container(color: Colors.white, child: Text('Hello, Container')),
       ),
     );
   }
