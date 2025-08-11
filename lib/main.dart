@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  // MaterialApp : 가장 기본이 되는 위젯트리의 최상위에 위치
-  // Scaffold : 화면의 기본 구조를 담당(기본 화면 가장 쉽게 만듬)
+  // 가장 기본이 되는 위젯
   runApp(
     MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Study to Container')),
+        appBar: AppBar(title: Text('Widget을 겹겹히 쌓아보자!')),
         body: Body(),
       ),
     ),
@@ -18,61 +17,40 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal, // 수평적 스크롤
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
+    return Stack(
+      children: [
+        Center(
+          child: Container(
+            width: 300,
+            height: 300,
+            decoration: BoxDecoration(
+              color: Colors.black,
+              borderRadius: BorderRadius.circular(150),
+            ),
+          ),
+        ),
+
+        Align(
+          alignment: Alignment.center,
+          child: Container(
+            width: 200,
+            height: 200,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(140),
+            ),
+          ),
+        ),
+
+        Align(
+          alignment: Alignment.center,
+          child: Container(
             width: 100,
             height: 100,
-            color: Colors.grey,
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+            decoration: BoxDecoration(color: Colors.red),
           ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.grey,
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.grey,
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.grey,
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.grey,
-            margin: EdgeInsets.symmetric(vertical: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.grey,
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.grey,
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-          ),
-          Container(
-            width: 100,
-            height: 100,
-            color: Colors.grey,
-            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
