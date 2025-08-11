@@ -2,55 +2,30 @@ import 'package:flutter/material.dart';
 
 void main() {
   // 가장 기본이 되는 위젯
-  runApp(
-    MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('Widget을 겹겹히 쌓아보자!')),
-        body: Body(),
-      ),
-    ),
-  );
+  runApp(MaterialApp(home: HomeWidget()));
 }
 
-class Body extends StatelessWidget {
-  const Body({super.key});
+class HomeWidget extends StatelessWidget {
+  const HomeWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Center(
-          child: Container(
-            width: 300,
-            height: 300,
-            decoration: BoxDecoration(
-              color: Colors.black,
-              borderRadius: BorderRadius.circular(150),
-            ),
-          ),
-        ),
+    return const SafeArea(child: Scaffold(body: ConstraintsWidgets()));
+  }
+}
 
-        Align(
-          alignment: Alignment.center,
-          child: Container(
-            width: 200,
-            height: 200,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(140),
-            ),
-          ),
-        ),
+class ConstraintsWidgets extends StatelessWidget {
+  const ConstraintsWidgets({super.key});
 
-        Align(
-          alignment: Alignment.center,
-          child: Container(
-            width: 100,
-            height: 100,
-            decoration: BoxDecoration(color: Colors.red),
-          ),
-        ),
-      ],
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 500,
+      width: 500,
+      color: Colors.blue,
+      child: SingleChildScrollView(
+        child: Container(color: Colors.red, width: 300, height: 300),
+      ),
     );
   }
 }
